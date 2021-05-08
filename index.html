@@ -6,6 +6,30 @@
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
+    <div class="form-container">
+      <form id="create-dream-form" style="">
+        <h3>Write your Dream</h3>
+        <input id='input-journal' type="text" name="jounrnal" value="" placeholder="Enter your dream here" class="input-text">
+        </br>
+        </br>
+        <textarea id='input-dream_datetime' name="dream_datetime" rows="8" cols="80" value="" palceholder="Enter your dream date and time"></textarea>
+        </br>
+        </br>
+        <input id='input-url' type="text" name="image" value="" placeholder="Enter your dream image URL" class="input-text">
+        </br>
+        </br>
+
+        <select id="categories" name="categories">
+          <option value="1">Love</option>
+          <option value="2">Nightmare</option>
+          <option value="3">Nature</option>
+        </select>
+        </br>
+        </br>
+        <input id='create-button' type="submit" name="submit" value="Create New Dream" class="submit">
+      </form>
+    </div>
+  
     <div id="dream-container">
       
     </div>
