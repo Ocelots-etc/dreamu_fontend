@@ -1,26 +1,34 @@
 const endPoint = "http://localhost:3001/api/v1/dreams";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // fetch and load dreams
   getDreams();
-  const createDreamForm = document.querySelector("#create-dream-form");
+    const createDreamForm = document.querySelector("#create-dream-form");
   createDreamForm.addEventListener("submit", (e) => createFormHandler(e));
 });
+
 function getDreams() {
   fetch(endPoint)
     .then((response) => response.json())
     .then((dreams) => {
       dreams.data.forEach((dream) => {
-        const dreamMarkup = `
-        <div data-id=${dream.id}>
-          <img src=${dream.attributes.image_url} width="250">
-          <h3>${dream.attributes.journal}</h3>
-          <p>${dream.attributes.category.name}</p>
-          <button data-id=${dream.id}>edit</button>
-        </div>
-        <br/><br/>`;
-        document.querySelector("#dream-container").innerHTML += dreamMarkup;
       });
     });
 }
+
+function render(dream) {
+  const dreamMarkup = `
+  <div data-id=${dream.id}>
+    <img src=${dream.attributes.image_url} width="250">
+    <h3>${dream.attributes.journal}</h3>
+    <p>${dream.attributes.category.name}</p>
+    <button data-id=${dream.id}>edit</button>
+  </div>
+  <br/><br/>`;
+
+  document.querySelector("#dream-container").innerHTML += dreamMarkup;
+}
+
 
 function createFormHandler(e) {
   e.preventDefault();
@@ -55,10 +63,8 @@ function postFetch(dream_datetime, journal, image_url, category_id) {
       <button data-id=${dream.id}>edit</button>
     </div>
     <br><br>`;
-
+    
     document.querySelector('#dream-container').innerHTML += dreamMarkup
-
-
   })
 }
 
