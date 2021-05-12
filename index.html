@@ -3,20 +3,22 @@
     <head>
     <meta charset="utf-8">
     <title>Dreamu</title>
-    <script type="text/javascript" src="index.js"></script>
+
+    <link rel="stylesheet" href="dtsel.css"/>
+
   </head>
   <body>
     <!-- if I had more time I'd put this in a function -->
     <div class="form-container">
       <form id="create-dream-form" style="">
         <h3>Write your Dream</h3>
-        <input id='input-journal' type="text" name="jounrnal" value="" placeholder="Enter your dream here" class="input-text">
-        </br>
-        </br>
-        <textarea id='input-dream_datetime' name="dream_datetime" 
-        rows="8" cols="80" value="" palceholder="Enter your dream date and time"></textarea>
-        </br>
-        </br>
+        <input id='input-dream_datetime' type="text" name="dream_datetime" value="" placeholder="Date and Time" class="input-text">
+        <br/>
+        <br/>
+        <textarea id='input-dream' name="journal" 
+        rows="8" cols="80" value="" placeholder="Enter your dream here"></textarea>
+        <br/>
+        <br/>
         <input id='input-url' type="text" name="image" value="" placeholder="Enter your dream image URL" class="input-text">
         <br/>
         <br/>
@@ -36,11 +38,11 @@
     <br/>
     <br/>
 
-    
-    
     <div id="dream-container">
-      
+
     </div>
       <p>This is a paragraph in the body of my page</p>
   </body>
+  <script src="dtsel.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 </html>
