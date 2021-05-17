@@ -1,27 +1,38 @@
 const endPoint = "http://localhost:3001/api/v1/dreams";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // fetch and load dreams
   getDreams();
-  const createDreamForm = document.querySelector("#create-dream-form");
+    const createDreamForm = document.querySelector("#create-dream-form");
   createDreamForm.addEventListener("submit", (e) => createFormHandler(e));
 });
+
 function getDreams() {
   fetch(endPoint)
     .then((response) => response.json())
     .then((dreams) => {
       dreams.data.forEach((dream) => {
-        const dreamMarkup = `
-        <div data-id=${dream.id}>
-          <img src=${dream.attributes.image_url} width="250">
-          <h3>${dream.attributes.journal}</h3>
-          <p>${dream.attributes.category.name}</p>
-          <button data-id=${dream.id}>edit</button>
-        </div>
-        <br/><br/>`;
-        document.querySelector("#dream-container").innerHTML += dreamMarkup;
+        // check that your data is nested in the console so you can 
+        // successfully access the attributes of each individual object
+        render(dream)
       });
     });
 }
 
+function render(dream){
+  const dreamMarkup = `
+  <div data-id=${dream.id}>
+    <img src=${dream.attributes.image_url} width="250">
+    <h3>${dream.attributes.journal}</h3>
+    <p>${dream.attributes.category.name}</p>
+    <button data-id=${dream.id}>edit</button>
+  </div>
+  <br/><br/>`;
+
+  document.querySelector("#dream-container").innerHTML += dreamMarkup;
+}
+
+  
 function createFormHandler(e) {
   e.preventDefault();
   const dream_datetimeInput = document.querySelector("#input-dream_datetime")
@@ -47,18 +58,7 @@ function postFetch(dream_datetime, journal, image_url, category_id) {
   .then(dream => {
     const dreamData = dream.data
     // render JSON response
-    const dreamMarkup = `
-    <div data-id=${dream.id}>
-      <img src=${dreamData.attributes.image_url} height="200" width="250">
-      <h3>${dreamData.attributes.journal}</h3>
-      <p>${dreamData.attributes.category.name}</p>
-      <button data-id=${dream.id}>edit</button>
-    </div>
-    <br><br>`;
-
-    document.querySelector('#dream-container').innerHTML += dreamMarkup
-
-
+    render(dreamData)
   })
 }
 
