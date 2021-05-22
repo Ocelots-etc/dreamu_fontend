@@ -14,6 +14,9 @@ function getDreams() {
       dreams.data.forEach((dream) => {
         // check that your data is nested in the console so you can 
         // successfully access the attributes of each individual object
+        let newDream = new Dream(dream, dream.attributes)
+        // let newDream = new Dream(dream)
+        // document.querySelector("#dream-container").innerHTML == newDream.renderDreamCard()
         render(dream)
       });
     });
@@ -32,7 +35,6 @@ function render(dream){
   document.querySelector("#dream-container").innerHTML += dreamMarkup;
 }
 
-  
 function createFormHandler(e) {
   e.preventDefault();
   const dream_datetimeInput = document.querySelector("#input-dream_datetime")
