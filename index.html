@@ -1,49 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Dreamu</title>
-
-    <link rel="stylesheet" href="dtsel.css"/>
-
+    <link rel="stylesheet" href="dtsel.css" />
   </head>
   <body>
     <!-- if I had more time I'd put this in a function -->
     <div class="form-container">
       <form id="create-dream-form" style="">
         <h3>Write your Dream</h3>
-        <input id='input-dream_datetime' type="text" name="dream_datetime" value="" placeholder="Date and Time" class="input-text">
-        <br/>
-        <br/>
-        <textarea id='input-dream' name="journal" 
-        rows="8" cols="80" value="" placeholder="Enter your dream here"></textarea>
-        <br/>
-        <br/>
-        <input id='input-url' type="text" name="image" value="" placeholder="Enter your dream image URL" class="input-text">
-        <br/>
-        <br/>
-
+        <input
+          id="input-dream_datetime"
+          type="text"
+          name="dream_datetime"
+          value=""
+          placeholder="Date and Time"
+          class="input-text"
+        />
+        <br />
+        <br />
+        <textarea
+          id="input-dream"
+          name="journal"
+          rows="8"
+          cols="80"
+          value=""
+          placeholder="Enter your dream here"
+        ></textarea>
+        <br />
+        <br />
+        <input
+          id="input-url"
+          type="text"
+          name="image"
+          value=""
+          placeholder="Enter your dream image URL"
+          class="input-text"
+        />
+        <br />
+        <br />
         <p>Pick a Category</p>
         <select id="categories" name="categories">
           <option value="1">Love</option>
           <option value="2">Nightmare</option>
           <option value="3">Nature</option>
         </select>
-        <br/>
-        <br/>
-
-        <input id='create-button' type="submit" name="submit" value="Create New Dream" class="submit">
+        <br />
+        <br />
+        <input
+          id="create-button"
+          type="submit"
+          name="submit"
+          value="Create New Dream"
+          class="submit"
+        />
       </form>
     </div>
-    <br/>
-    <br/>
-
-    <div id="dream-container">
-
-    </div>
-      <p>This is a paragraph in the body of my page</p>
+    <br />
+    <br />
+    <div id="dream-container"></div>
+    <p>This is a paragraph in the body of my page</p>
   </body>
   <script src="dtsel.js"></script>
-  <script type="text/javascript" src="dream.js"></script>
   <script type="text/javascript" src="index.js"></script>
 </html>
