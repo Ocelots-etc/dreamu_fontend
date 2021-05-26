@@ -13,36 +13,28 @@ function getDreams() {
       dreams.data.forEach((dream) => {
         // check that your data is nested in the console so you can
         // successfully access the attributes of each individual object
-        render(dream);
+
+        let newDream = new Dream(dream);
+
+        document.querySelector("#dream-container").innerHTML +=
+          newDream.renderDreamHtml();
+
+        // render(dream)
       });
     });
 }
 
-function render(dream) {
-  const dreamMarkup = `
-  <div data-id=${dream.id}>
-    <img src=${dream.attributes.image_url} width="250">
-    <h3>${dream.attributes.journal}</h3>
-    <p>${dream.attributes.category.name}</p>
-    <button data-id=${dream.id}>edit</button>
-  </div>
-  <br/><br/>`;
-  document.querySelector("#dream-container").innerHTML += dreamMarkup;
-}
-
 function createFormHandler(e) {
   e.preventDefault();
-  const dream_datetimeInput = document.querySelector(
-    "#input-dream_datetime"
-  ).value;
-  const dreamInput = document.querySelector("#input-dream").value;
-  const imageInput = document.querySelector("#input-url").value;
-  const categoryId = parseInt(document.querySelector("#categories").value);
-  postFetch(dream_datetimeInput, dreamInput, imageInput, categoryId);
-}
-function postFetch(dream_datetime, journal, image_url, category_id) {
-  // build body object outside of fetch
+  const dream_datetime = document.querySelector("#input-dream_datetime").value;
+  const journal = document.querySelector("#input-dream").value;
+  const image_url = document.querySelector("#input-url").value;
+  const category_id = parseInt(document.querySelector("#categories").value);
   const bodyData = { dream_datetime, journal, image_url, category_id };
+  postFetch(bodyData);
+}
+function postFetch(bodyData) {
+  // build body object outside of fetch
   fetch(endPoint, {
     method: "POST",
     headers: {
@@ -53,10 +45,14 @@ function postFetch(dream_datetime, journal, image_url, category_id) {
   })
     .then((response) => response.json())
     .then((dream) => {
-      // console.log(dream)
       const dreamData = dream.data;
       // render JSON response
-      render(dreamData);
+      let newDream = new Dream(dream);
+
+      document.querySelector("#dream-container").innerHTML +=
+        newDream.renderDreamHtml();
+
+      // render(dreamData)
     });
 }
 let dream_datetimeInput = new dtsel.DTS('input[name="dream_datetime"]', {
