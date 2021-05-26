@@ -7,6 +7,7 @@ class Dream {
     this.category = dream.attributes.category
     Dream.all.push(this)
   }
+  
   renderDreamHtml() {
     return `
     <div data-id=${this.id}>

@@ -47,7 +47,7 @@ function postFetch(bodyData) {
     .then((dream) => {
       const dreamData = dream.data;
       // render JSON response
-      let newDream = new Dream(dream);
+      let newDream = new Dream(dreamData);
 
       document.querySelector("#dream-container").innerHTML +=
         newDream.renderDreamHtml();
